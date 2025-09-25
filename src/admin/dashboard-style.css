@@ -5,7 +5,6 @@ html, body {
     overflow-x: hidden;
 }
 
-
 body {
     padding: 0;
     margin: 0;
@@ -15,8 +14,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
+    flex-direction: column;  
 }
 
 nav {
@@ -39,31 +37,26 @@ nav {
     color: inherit;
 }
 
-.search-container {
-    height: 22%;
+.top-container {
+    height: 12%;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.search-container p {
-    font-size: 3rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    margin: 0;
-}
-.search-inner {
-    height: 40%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
-#student-search-bar {
-    height: 50%;
+.search-cont {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2rem;
+    height: 100%;   
     width: 50%;
+}
+
+#admin-search-bar {
+    height: 50%;
+    width: 70%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
     border-radius: 50px 0 0 50px;
@@ -72,32 +65,58 @@ nav {
     margin-right: 0.5rem;
 }
 
-#student-search-btn {
+#admin-search-btn {
     height: 50%;
-    width: 10%;
+    width: 20%;
     padding: 0 0.5rem;
     border: 1px solid black;
     background-color: black;
     color: white;
     border-radius: 0 50px 50px 0;
 }
-#student-search-btn:hover {
-    background-color: white;
+
+#admin-search-btn:hover, #admin-clear-btn:hover {
+    background-color: gray;
     color: black;
     border: none;
     transition: ease 0.3s;
 }
 
-.result-container {
-    height: 70%;
+.add-borrowed-cont {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.action-btn {
+    height: 50%;
+    width: 20%;
+    padding: 0 0.5rem;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    margin: 0 1rem; 
+}
+
+#borrowed-btn {
+    border: 1px solid white;
+    background-color: white;
+    color: black;
+}
+
+.data-container {
+    height: 80%;
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-}   
+}
 
-#result-label {
+#catalog-label {
     margin-left: 2.5rem;
     align-self: flex-start;
     font-size: 2rem;
@@ -112,6 +131,7 @@ nav {
     border-spacing: 0;           
     overflow: hidden;            
     border-radius: 10px 10px 0 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 #book-table thead {
     background-color: black;
@@ -123,7 +143,11 @@ nav {
     border: none;
     text-align: center;
     height: 3rem;
-    font-family: 'Courier New', Courier, monospace;
 }
-
-
+#edit-del-btn, #status-dropdown {
+    background-color:   gray;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: none;
+}

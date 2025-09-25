@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <title>Manage Books | University E-Library</title>
+</head>
+<body>
+    <nav>
+        <p><i class="fa-solid fa-book"></i> <a id="home-link" href="../index.html"> University E-Library</a></p>
+        <p><i class="fa-solid fa-user-tie"></i> Admin Dashboard</p>
+    </nav>
+    
+    <div class="top-container"> 
+        <div class="search-cont">
+            <input id="admin-search-bar" type="text" name="keyword" placeholder="Search books by title, author or year">
+            <button id="admin-search-btn">Search</button>
+            <button class="action-btn" id="admin-clear-btn">Clear Search</button>  
+        </div>
+        <div class="add-borrowed-cont">
+            <button class="action-btn" id="borrowed-btn">Borrowed</button>
+            <button class="action-btn" id="add-btn">Add Book</button>
+        </div>
+    </div>
+    <div class="data-container">
+        <p id="catalog-label">Library Catalog</p>
+
+    <table id="book-table" border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+        <th>Book ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>1</td>
+        <td>Introduction to Algorithms</td>
+        <td>Thomas H. Cormen</td>
+        <td>2009</td>
+        <td>Computer Science</td>
+        <td>
+            <select name="status" id="status-dropdown">
+                <option value="available">Available</option>
+                <option value="borrowed">Borrowed</option>
+            </select>
+        </td>
+        <td><button id="edit-del-btn">Edit</button></td>
+        <td><button id="edit-del-btn">Delete</button></td>
+
+        </tr>
+        <tr>
+        <td>2</td>
+        <td>To Kill a Mockingbird</td>
+        <td>Harper Lee</td>
+        <td>1960</td>
+        <td>Literature</td>
+        <td>
+            <select name="status" id="status-dropdown">
+                <option value="available">Available</option>
+                <option value="borrowed">Borrowed</option>
+            </select>
+        </td>
+        <td><button id="edit-del-btn">Edit</button></td>
+        <td><button id="edit-del-btn">Delete</button></td>
+        </tr>
+
+        <tr>
+        <td>3</td>
+        <td>Clean Code</td>
+        <td>Robert C. Martin</td>
+        <td>2008</td>
+        <td>Software Engineering</td>
+        <td>
+            <select name="status" id="status-dropdown">
+                <option value="available">Available</option>
+                <option value="borrowed">Borrowed</option>
+            </select>
+        </td>
+        <td><button id="edit-del-btn">Edit</button></td>
+        <td><button id="edit-del-btn">Delete</button></td>
+        </tr>
+    </tbody>
+    </table>
+
+    </div>
+
+    </div>
+    <script src="https://kit.fontawesome.com/31e62592db.js" crossorigin="anonymous"></script>  
+</body>
+</html>
