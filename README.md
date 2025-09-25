@@ -24,7 +24,7 @@ Note: It must show that you are in the development branch
 
 ### Create branch using the command
 
-git branch feature/branch-name <br>
+git branch feature/branch-name development<br>
 git checkout feature/branch-name
 
 ### Check current branch
