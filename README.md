@@ -6,10 +6,11 @@
 
 docker-compose up -d --build
 
-## Switch to the development branch
+## Create Switch to the development branch
 
 ### Run command
 
+git branch development <br>
 git checkout development
 
 ### Check current branch
@@ -23,7 +24,8 @@ Note: It must show that you are in the development branch
 
 ### Create branch using the command
 
-git branch -b feature/branch-name"
+git branch feature/branch-name <br>
+git checkout feature/branch-name
 
 ### Check current branch
 
