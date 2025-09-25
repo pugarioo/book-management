@@ -1,4 +1,4 @@
-# This is the main branch
+# This is the development branch
 
 ## Initialize the Containers
 
