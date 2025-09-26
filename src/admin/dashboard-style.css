@@ -99,6 +99,7 @@ nav {
     color: white;
     border-radius: 50px;
     margin: 0 1rem; 
+    cursor: pointer;
 }
 
 #borrowed-btn {
@@ -144,10 +145,174 @@ nav {
     text-align: center;
     height: 3rem;
 }
-#edit-del-btn, #status-dropdown {
+#edit-del-btn, #status-dropdown, #update-status-dropdown {
     background-color:   gray;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     border: none;
+}
+
+.add-cont {
+    background-color: rgba(0, 0, 0, 0.466);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: -1;
+}
+
+.add-cont.open {
+    z-index: 999;
+    opacity: 1;
+    transition: ease 0.3s;
+}
+
+.add-cont p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.add-cont form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    height: 60%;
+    width: 50%;
+    border-radius: 30px;
+    padding: 1rem
+}
+.add-cont form input {
+    width: 80%;
+    height: 10%;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.add-cont form label {
+    align-self: flex-start;
+    margin: 0 0 0.5rem 4.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+
+}
+
+.form-options {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.form-options button {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0.8rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+}
+
+.form-options button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    transition: 0.5s ease-in-out;
+}
+
+.edit-cont {
+    background-color: rgba(0, 0, 0, 0.466);;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: -1;
+}
+
+.edit-cont.open {
+    z-index: 999;
+    opacity: 1;
+    transition: ease 0.3s;
+}
+
+.edit-cont p {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.edit-cont form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    height: 60%;
+    width: 50%;
+    border-radius: 30px;
+    padding: 1rem
+}
+.edit-cont form input {
+    width: 80%;
+    height: 10%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.edit-cont form label, #update-status-dropdown {
+    align-self: flex-start;
+    margin: 0 0 0.5rem 4.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+
+}
+
+
+.form-options {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.form-options button {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0.8rem;
+    margin-left: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+}
+
+.form-options button:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    transition: 0.5s ease-in-out;
 }
