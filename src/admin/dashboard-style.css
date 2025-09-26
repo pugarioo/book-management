@@ -146,11 +146,17 @@ nav {
     height: 3rem;
 }
 .edit-del-btn, .status-dropdown, #update-status-dropdown {
-    background-color:   gray;
+    background-color:   black;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     border: none;
+}
+
+.edit-del-btn:hover {
+    background-color: white;
+    color: black;
+    transition: ease .2s;
 }
 
 .add-cont {

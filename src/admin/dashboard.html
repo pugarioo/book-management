@@ -15,7 +15,7 @@
     <div class="top-container"> 
         <div class="search-cont">
             <input id="admin-search-bar" type="text" name="keyword" placeholder="Search books by title, author or year">
-            <button id="admin-search-btn">Search</button>
+            <button id="admin-search-btn" onclick="searchBook()">Search</button>
             <button class="action-btn" id="admin-clear-btn">Clear Search</button>  
         </div>
         <div class="add-borrowed-cont">
@@ -40,53 +40,6 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <td>1</td>
-        <td>Introduction to Algorithms</td>
-        <td>Thomas H. Cormen</td>
-        <td>2009</td>
-        <td>Computer Science</td>
-        <td>
-            <select name="status" class="status-dropdown">
-                <option value="available">Available</option>
-                <option value="borrowed">Borrowed</option>
-            </select>
-        </td>
-        <td><button class="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
-        <td><button class="edit-del-btn">Delete</button></td>
-
-        </tr>
-        <tr>
-        <td>2</td>
-        <td>To Kill a Mockingbird</td>
-        <td>Harper Lee</td>
-        <td>1960</td>
-        <td>Literature</td>
-        <td>
-            <select name="status" class="status-dropdown">
-                <option value="available">Available</option>
-                <option value="borrowed">Borrowed</option>
-            </select>
-        </td>
-        <td><button class="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
-        <td><button class="edit-del-btn">Delete</button></td>
-        </tr>
-
-        <tr>
-        <td>3</td>
-        <td>Clean Code</td>
-        <td>Robert C. Martin</td>
-        <td>2008</td>
-        <td>Software Engineering</td>
-        <td>
-            <select name="status" class="status-dropdown">
-                <option value="available">Available</option>
-                <option value="borrowed">Borrowed</option>
-            </select>
-        </td>
-        <td><button class="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
-        <td><button class="edit-del-btn">Delete</button></td>
-        </tr>
     </tbody>
     </table>
     </div>
@@ -106,7 +59,7 @@
             
             <div class="form-options">
                 <button type="button" id="add-close-btn">Cancel</button>
-                <button type="button" id="submit-book-btn">Add</button>
+                <button type="button" id="submit-book-btn" onclick="addBook()">Add</button>
             </div>
         </form>  
     </div>
