@@ -5,6 +5,7 @@ const addCloseBtn = document.getElementById("add-close-btn")
 const addContainer = document.querySelector(".add-cont")
 const editCloseBtn = document.getElementById("edit-close-btn")
 const editContainer = document.querySelector(".edit-cont")
+const toggleBorrowedBtn = document.querySelector(".borrowed-btn")
 
 addOpenBtn.addEventListener("click", () => {
     console.log("clicked")
@@ -17,6 +18,17 @@ addCloseBtn.addEventListener("click", () => {
 
 editCloseBtn.addEventListener("click", () => {
     editContainer.classList.remove("open")
+})
+
+toggleBorrowedBtn.addEventListener("click", () => {
+    if (toggleBorrowedBtn.classList.contains("active")) {
+        getBooks();
+        toggleBorrowedBtn.classList.remove("active")
+    }
+    else {
+        getBorrowedBooks();
+        toggleBorrowedBtn.classList.add("active")
+    }
 })
 
 function showEdit(btn) {
@@ -73,7 +85,23 @@ function getBooks() {
 function searchBook() {
     const keyword = (document.getElementById("admin-search-bar").value).trim()
 
+    if (keyword === "") return
+
     fetch("../api/search_book.php?keyword=" + encodeURIComponent(keyword), {
+        method: "GET"
+    })
+    .then(res => res.json())
+    .then(data => renderBooks(data))
+    .catch(err => console.error("Error: ", err))
+}
+
+function clearSearch() {
+    document.getElementById("admin-search-bar").value = ""
+    getBooks()
+}
+
+function getBorrowedBooks() {
+    fetch("../api/get_borrowed.php" , {
         method: "GET"
     })
     .then(res => res.json())
@@ -141,3 +169,4 @@ function deleteBook(btn) {
     })
     .catch(err => console.error("Error: ", err))
 }
+

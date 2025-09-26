@@ -1,7 +1,19 @@
+document.addEventListener("DOMContentLoaded", getBooks)
+
+const closeConfirmBorrow = document.getElementById("cancel-confirm")
+const confirmContainer = document.querySelector(".borrow-confirm-cont")
+
+closeConfirmBorrow.addEventListener("click", () => {
+    console.log("clicked")
+    confirmContainer.classList.remove("open")
+})
+
 function searchBooks() {
     const keyword = (document.getElementById("student-search-bar").value).trim()
     
-    fetch("api/search_book.php?keyword=" + encodeURIComponent(keyword), {
+    if (keyword === "") return
+
+    fetch("../api/search_book.php?keyword=" + encodeURIComponent(keyword), {
         method: "GET"
     })
     .then(res => res.json())
@@ -9,8 +21,13 @@ function searchBooks() {
     .catch(err => console.error("Error: ", err))
 }
 
+function clearSearch() {
+    document.getElementById("student-search-bar").value = ""
+    getBooks()
+}
+
 function getBooks() {
-    fetch("api/browse.php" , {
+    fetch("../api/browse.php", {
         method: "GET"
     })
     .then(res => res.json())
@@ -19,36 +36,67 @@ function getBooks() {
 }
 
 function renderBooks(data) {
+    console.log("rendering..")
     const table = document.querySelector("#book-table tbody")
     table.innerHTML = "";
 
     data.forEach(row => {
         const tableRow = document.createElement("tr")
 
-        tableRow.appendChild(createCell(row.id))
+        tableRow.appendChild(createCell(row.book_id))
         tableRow.appendChild(createCell(row.title))
         tableRow.appendChild(createCell(row.author))
         tableRow.appendChild(createCell(row.year))
         tableRow.appendChild(createCell(row.category))
-        tableRow.appendChild(createCell(row.status))
+        tableRow.appendChild(createCell(row.status == 'available' ? 'Available' : "Borrowed"))
         
         if (row.status === "available") {
-            const borrowBtn = document.createElement("button")
-            borrowBtn.className = "borrow-btn"
-            borrowBtn.setAttribute("onclick", "borrowBook(this)")
-            borrowBtn.textContent = "Borrow";
+            const btn = createButtonCell("Borrow", "borrow-btn", "confirmBorrow(this)")
+            tableRow.appendChild(btn) 
+        }
+        else {
+            const btn = createButtonCell("Return", "return-btn", "confirmBorrow(this)")
+            tableRow.appendChild(btn)
         }
 
         table.appendChild(tableRow)
     })
 }
 
-function borrowBook(btn) {
+function createCell(value) {
+    const cell = document.createElement("td")
+    cell.textContent = value
+
+    return cell
+}
+
+function createButtonCell(textContent, classname, functionName) {
+    const cell = document.createElement("td")
+
+    const btn = document.createElement("button")
+        btn.className = classname
+        btn.setAttribute("onclick", functionName)
+        btn.textContent = textContent;
+
+    cell.appendChild(btn)
+
+    return cell
+}
+
+function confirmBorrow (btn) {
     const row = btn.closest("tr")
-    const cells = row.querySelectorAll("td")
+    const id = (row.querySelectorAll("td")[0]).textContent
 
-    const id = cells[0].textContent
+    confirmContainer.classList.add("open")
 
+    document.getElementById("confirm-borrow").setAttribute("onclick", `borrowBook(${id})`)
+
+    
+    
+    console.log("popped")
+}
+
+function borrowBook(id) {
     fetch("api/borrow_book.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

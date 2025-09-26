@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["keyword"]) && $_GET["key
                             WHERE title LIKE ? 
                                OR author LIKE ? 
                                OR year LIKE ? 
-                               OR isbn LIKE ?");
+                               OR category LIKE ?");
     $like = "%" . $keyword . "%";
     $stmt->bind_param("ssss", $like, $like, $like, $like);
     $stmt->execute();
