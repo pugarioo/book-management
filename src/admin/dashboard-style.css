@@ -145,7 +145,7 @@ nav {
     text-align: center;
     height: 3rem;
 }
-#edit-del-btn, #status-dropdown, #update-status-dropdown {
+.edit-del-btn, .status-dropdown, .update-status-dropdown {
     background-color:   gray;
     color: white;
     padding: 0.5rem 1rem;

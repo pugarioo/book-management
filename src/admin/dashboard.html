@@ -47,13 +47,13 @@
         <td>2009</td>
         <td>Computer Science</td>
         <td>
-            <select name="status" id="status-dropdown">
+            <select name="status" class="status-dropdown">
                 <option value="available">Available</option>
                 <option value="borrowed">Borrowed</option>
             </select>
         </td>
-        <td><button id="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
-        <td><button id="edit-del-btn">Delete</button></td>
+        <td><button class="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
+        <td><button class="edit-del-btn">Delete</button></td>
 
         </tr>
         <tr>
@@ -63,13 +63,13 @@
         <td>1960</td>
         <td>Literature</td>
         <td>
-            <select name="status" id="status-dropdown">
+            <select name="status" class="status-dropdown">
                 <option value="available">Available</option>
                 <option value="borrowed">Borrowed</option>
             </select>
         </td>
-        <td><button id="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
-        <td><button id="edit-del-btn">Delete</button></td>
+        <td><button class="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
+        <td><button class="edit-del-btn">Delete</button></td>
         </tr>
 
         <tr>
@@ -79,13 +79,13 @@
         <td>2008</td>
         <td>Software Engineering</td>
         <td>
-            <select name="status" id="status-dropdown">
+            <select name="status" class="status-dropdown">
                 <option value="available">Available</option>
                 <option value="borrowed">Borrowed</option>
             </select>
         </td>
-        <td><button id="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
-        <td><button id="edit-del-btn">Delete</button></td>
+        <td><button class="edit-del-btn" onclick="showEdit(this)">Edit</button></td>
+        <td><button class="edit-del-btn">Delete</button></td>
         </tr>
     </tbody>
     </table>
@@ -93,7 +93,7 @@
 
     <div class="add-cont">
         
-        <form action="" method="POST">
+        <form id="add-form" action="" method="POST">
             <p>Add a Book</p>
             <label for="book-title">Title</label>
             <input type="text" name="book-title" id="book-title-add" placeholder="Enter book title">
