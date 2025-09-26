@@ -46,13 +46,13 @@ CREATE DATABASE books_db;
 
 ### Use the PhpMyAdmin
 
-CREATE TABLE books (
-book_id INT AUTO_INCREMENT PRIMARY KEY,
-title VARCHAR(255) NOT NULL,
-author VARCHAR(255) NOT NULL,
-year YEAR,
-category VARCHAR(100),
-status ENUM('available', 'borrowed') DEFAULT 'available'
-);
+    CREATE TABLE books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    year INT(4),  -- can now store any year (e.g., 1813, 2025, etc.)
+    category VARCHAR(100),
+    status ENUM('available', 'borrowed') DEFAULT 'available'
+    );
 
 ## After these setup, start developing
