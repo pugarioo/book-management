@@ -18,8 +18,6 @@ editCloseBtn.addEventListener("click", () => {
 })
 
 function showEdit(btn) {
-    console.log("edit opened")
-
     const row = btn.closest("tr")
     const cells = row.querySelectorAll("td")
 
