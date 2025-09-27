@@ -90,7 +90,7 @@ nav {
     align-items: center;
 }
 
-.add-btn, .borrowed-btn, .clear-btn {
+.add-btn, .trans-btn, .clear-btn {
     height: 50%;
     width: 20%;
     padding: 0 0.5rem;
@@ -107,7 +107,7 @@ nav {
     color: white;
 }
 
-.borrowed-btn.active {
+.trans-btn.active {
     background-color: black;
     color: white;
     border: 3px solid white;
@@ -130,7 +130,7 @@ nav {
     font-weight: bold;
 }
 
-#book-table {
+.trans-table, .catalog-table {
     width: 95%;
     border: none;
     border-collapse: separate;   
@@ -139,17 +139,45 @@ nav {
     border-radius: 10px 10px 0 0;
     font-family: 'Courier New', Courier, monospace;
 }
-#book-table thead {
+.trans-table thead, .catalog-table thead {
     background-color: black;
     color: white;
     border-radius:  50px;
     overflow: hidden;
 }
-#book-table th, td {
+
+.catalog-table thead {
+    background-color: black;
+    color: white;
+    border-radius:  50px;
+    overflow: hidden;
+}
+
+.trans-table th, td {
     border: none;
     text-align: center;
     height: 3rem;
 }
+
+.catalog-table th, td {
+    border: none;
+    text-align: center;
+    height: 3rem;
+}
+
+.trans-table {
+    display: none;
+}
+
+.trans-table.open {
+    display: table;
+}
+
+.catalog-table.close {
+    display: none;
+}
+
+
 .edit-del-btn, .status-dropdown, #update-status-dropdown {
     background-color:   black;
     color: white;

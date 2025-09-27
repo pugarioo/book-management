@@ -16,6 +16,7 @@
 ### Check current branch
 
     git status <br>
+
 Note: It must show that you are in the development branch
 
 ## Switch to the feature branch
@@ -30,9 +31,10 @@ Note: It must show that you are in the development branch
 ### Check current branch
 
     git status <br>
+
 Note: It must show that you are in the feature/branch-name branch
 
-## 📚 Books Database Setup Instructions
+## Books Database Setup Instructions
 
 Follow the steps below to set up the `books_db` database and the `books` table.
 
@@ -42,9 +44,11 @@ Follow the steps below to set up the `books_db` database and the `books` table.
 
 CREATE DATABASE books_db;
 
-### 2. Create the table
+### 2. Create the tables
 
 ### Use the PhpMyAdmin
+
+#### Books table
 
     CREATE TABLE books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -55,18 +59,31 @@ CREATE DATABASE books_db;
     status ENUM('available', 'borrowed') DEFAULT 'available'
     );
 
+#### Book transactions table
+
+    CREATE TABLE transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL,
+    book_title VARCHAR(255) NOT NULL,
+    date_borrowed DATE NOT NULL,
+    date_returned DATE,
+    status ENUM('completed', 'pending') DEFAULT 'pending',
+    FOREIGN KEY (book_id) REFERENCES books(book_id)
+    );
+
 ### Use this command to generate dummy data
-    INSERT INTO books (title, author, year, category, status)
+
+    INSERT INTO books (title, author, year, category)
     VALUES
-    ('To Kill a Mockingbird', 'Harper Lee', 1960, 'Fiction', 'available'),
-    ('1984', 'George Orwell', 1949, 'Dystopian', 'available'),
-    ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Classic', 'available'),
-    ('Pride and Prejudice', 'Jane Austen', 1813, 'Romance', 'borrowed'),
-    ('Moby Dick', 'Herman Melville', 1851, 'Adventure', 'available'),
-    ('The Catcher in the Rye', 'J.D. Salinger', 1951, 'Fiction', 'available'),
-    ('Brave New World', 'Aldous Huxley', 1932, 'Dystopian', 'borrowed'),
-    ('The Hobbit', 'J.R.R. Tolkien', 1937, 'Fantasy', 'available'),
-    ('Fahrenheit 451', 'Ray Bradbury', 1953, 'Dystopian', 'available'),
-    ('Crime and Punishment', 'Fyodor Dostoevsky', 1866, 'Philosophical Fiction', 'available');
+    ('To Kill a Mockingbird', 'Harper Lee', 1960, 'Fiction'),
+    ('1984', 'George Orwell', 1949, 'Dystopian'),
+    ('The Great Gatsby', 'F. Scott Fitzgerald', 1925, 'Classic'),
+    ('Pride and Prejudice', 'Jane Austen', 1813, 'Romance'),
+    ('Moby Dick', 'Herman Melville', 1851, 'Adventure'),
+    ('The Catcher in the Rye', 'J.D. Salinger', 1951, 'Fiction'),
+    ('Brave New World', 'Aldous Huxley', 1932, 'Dystopian'),
+    ('The Hobbit', 'J.R.R. Tolkien', 1937, 'Fantasy'),
+    ('Fahrenheit 451', 'Ray Bradbury', 1953, 'Dystopian'),
+    ('Crime and Punishment', 'Fyodor Dostoevsky', 1866, 'Philosophical Fiction');
 
 ## After these setup, start developing

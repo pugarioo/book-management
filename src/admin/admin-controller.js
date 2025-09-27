@@ -5,7 +5,9 @@ const addCloseBtn = document.getElementById("add-close-btn")
 const addContainer = document.querySelector(".add-cont")
 const editCloseBtn = document.getElementById("edit-close-btn")
 const editContainer = document.querySelector(".edit-cont")
-const toggleBorrowedBtn = document.querySelector(".borrowed-btn")
+const toggleBorrowedBtn = document.querySelector(".trans-btn")
+const catalogTable = document.querySelector(".catalog-table")
+const transTable = document.querySelector(".trans-table")
 
 addOpenBtn.addEventListener("click", () => {
     console.log("clicked")
@@ -22,12 +24,16 @@ editCloseBtn.addEventListener("click", () => {
 
 toggleBorrowedBtn.addEventListener("click", () => {
     if (toggleBorrowedBtn.classList.contains("active")) {
-        getBooks();
+        getBooks()
         toggleBorrowedBtn.classList.remove("active")
+        catalogTable.classList.remove("close")
+        transTable.classList.remove("open")
     }
     else {
-        getBorrowedBooks();
+        getTransactions();
         toggleBorrowedBtn.classList.add("active")
+        catalogTable.classList.add("close")
+        transTable.classList.add("open")
     }
 })
 
@@ -41,18 +47,15 @@ function showEdit(btn) {
     const author = cells[2].textContent;
     const year = cells[3].textContent;
     const category = cells[4].textContent;
-    const status = cells[5].textContent.trim().toLowerCase();
 
     document.getElementById("book-id-edit").value = id
     document.getElementById("book-title-edit").value = title;
     document.getElementById("book-author-edit").value = author;
     document.getElementById("book-year-edit").value = year;
     document.getElementById("book-category-edit").value = category;
-    document.getElementById("update-status-dropdown").value = status;
 
     editContainer.classList.add("open")
 }
-
 
 function addBook() {
     const form = document.getElementById("add-form")
@@ -116,14 +119,34 @@ function clearSearch() {
     getBooks()
 }
 
-function getBorrowedBooks() {
-    fetch("../api/get_borrowed.php" , {
+function getTransactions() {
+    fetch("../api/get_transactions.php" , {
         method: "GET"
     })
     .then(res => res.json())
-    .then(data => renderBooks(data))
+    .then(data => renderTransactions(data))
     .catch(err => console.error("Error: ", err))
 }
+
+function renderTransactions(data) {
+    const table = document.querySelector("#transactions-table tbody")
+    table.innerHTML = "";
+    
+    data.forEach(row => {
+        const tableRow = document.createElement("tr")
+        
+        tableRow.appendChild(createCell(row.book_id))
+        tableRow.appendChild(createCell(row.title))
+        tableRow.appendChild(createCell(row.author))
+        tableRow.appendChild(createCell(row.year))
+        tableRow.appendChild(createCell(row.category))
+        tableRow.appendChild(createCell(row.status === 'available' ? 'Available' : "Borrowed"))
+        tableRow.appendChild(createButtonCell("Set as returned", "return-btn", "returnBook()"))
+        
+        table.appendChild(tableRow)
+    })
+}
+
 
 function renderBooks(data) {
     const table = document.querySelector("#book-table tbody")
@@ -142,7 +165,7 @@ function renderBooks(data) {
         tableRow.appendChild(createButtonCell("Delete", "edit-del-btn", "deleteBook(this)"))
         
         table.appendChild(tableRow)
-        })
+    })
 }
 
 function createCell(value) {

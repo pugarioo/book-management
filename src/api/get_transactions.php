@@ -1,7 +1,7 @@
 <?php
 include 'connect.php';
 
-$sql = "SELECT book_id, title, author, year, category, status FROM books WHERE status = 'borrowed'";
+$sql = "SELECT * FROM transactions";
 $result = $conn->query($sql);
 
 $books = [];
