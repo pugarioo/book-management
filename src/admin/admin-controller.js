@@ -35,12 +35,15 @@ function showEdit(btn) {
     const row = btn.closest("tr")
     const cells = row.querySelectorAll("td")
 
+
+    const id = cells[0].textContent
     const title = cells[1].textContent;
     const author = cells[2].textContent;
     const year = cells[3].textContent;
     const category = cells[4].textContent;
-    const status = cells[5].textContent;
+    const status = cells[5].textContent.trim().toLowerCase();
 
+    document.getElementById("book-id-edit").value = id
     document.getElementById("book-title-edit").value = title;
     document.getElementById("book-author-edit").value = author;
     document.getElementById("book-year-edit").value = year;
@@ -65,9 +68,22 @@ function addBook() {
     .then(data => {
         // Logic for notification
         if (data.status === "success") {
-            addContainer.classList.remove("open")
+            document.getElementById("add-form-title").textContent = "Added Succesfully"
+            setTimeout(() => {
+                addContainer.classList.remove("open")
+                document.getElementById("add-form-title").textContent = "Add a book"
+            }, 1000)
+
             getBooks()
             form.reset()
+        }
+        else {
+            document.getElementById("add-form-title").textContent = "Adding Failed"
+            setTimeout(() => {
+                addContainer.classList.remove("open")
+                document.getElementById("add-form-title").textContent = "Add a book"
+            }, 1000)
+
         }
     })
     .catch(err => console.error("Error: ", err))
@@ -121,7 +137,7 @@ function renderBooks(data) {
         tableRow.appendChild(createCell(row.author))
         tableRow.appendChild(createCell(row.year))
         tableRow.appendChild(createCell(row.category))
-        tableRow.appendChild(createCell(row.status))
+        tableRow.appendChild(createCell(row.status === 'available' ? 'Available' : "Borrowed"))
         tableRow.appendChild(createButtonCell("Edit", "edit-del-btn", "showEdit(this)"))
         tableRow.appendChild(createButtonCell("Delete", "edit-del-btn", "deleteBook(this)"))
         
@@ -162,11 +178,43 @@ function deleteBook(btn) {
     .then(res => res.json())
     .then(data => {
         // Logic to notify deletion
-        if (data.status == "success") {
+        if (data.status === "success") {
             console.log("removed")
             row.remove()
         }
     })
     .catch(err => console.error("Error: ", err))
 }
+
+function updateBook() {
+    const form = document.getElementById("edit-form")
+    const formData = new FormData(form)
+
+    fetch("../api/edit.php", {
+        method: "POST",
+        body: formData
+    })
+    .then((res => res.json()))
+    .then(data => {
+        console.log("Raw res: ", data)
+        if (data.status == "success") {
+            document.getElementById("edit-form-title").textContent = "Updated Succesfully"
+            setTimeout(() => {
+                editContainer.classList.remove("open")
+                document.getElementById("edit-form-title").textContent = "Update Book"
+            }, 1000)
+
+            getBooks()
+        }
+        else {
+            document.getElementById("edit-form-title").textContent = "Updated Failed"
+            setTimeout(() => {
+                editContainer.classList.remove("open")
+                document.getElementById("edit-form-title").textContent = "Update Book"
+            }, 1000)
+        }
+    })
+    .catch(err => console.error("Error: ", err))
+}
+
 

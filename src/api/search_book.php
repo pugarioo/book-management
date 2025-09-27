@@ -5,12 +5,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["keyword"]) && $_GET["key
     $keyword = trim($_GET['keyword']);
 
     $stmt = $conn->prepare("SELECT * FROM books 
-                            WHERE title LIKE ? 
+                            WHERE book_id LIKE ?
+                               OR title LIKE ? 
                                OR author LIKE ? 
                                OR year LIKE ? 
                                OR category LIKE ?");
     $like = "%" . $keyword . "%";
-    $stmt->bind_param("ssss", $like, $like, $like, $like);
+    $stmt->bind_param("sssss", $like, $like, $like, $like, $like);
     $stmt->execute();
     $result = $stmt->get_result();
 

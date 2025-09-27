@@ -91,8 +91,6 @@ function confirmBorrow (btn) {
 
     document.getElementById("confirm-borrow").setAttribute("onclick", `borrowBook(${id})`)
 
-    
-    
     console.log("popped")
 }
 

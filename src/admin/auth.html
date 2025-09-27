@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard-style.css">
+    <title>Authentication | University E-Library</title>
+</head>
+<body>
+    <nav>
+        <p><i class="fa-solid fa-book"></i> <a id="home-link" href="../index.html"> University E-Library</a></p>
+        <p><i class="fa-solid fa-user-tie"></i> Admin Authentication</p>
+    </nav>
+    
+    <div class="auth-cont">
+        <div class="auth-card">
+            <p id="auth-title">Authentication</p>
+            <p id="auth-msg">Please provide your administrator passcode to access the dashboard.</p>
+            <input type="password" id="auth-password">
+            <button type="button" id="auth-btn" onclick="authenticate()">Submit</button>
+            <P id="submit-msg"></P>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="https://kit.fontawesome.com/31e62592db.js" crossorigin="anonymous"></script>  
+</body>
+</html>

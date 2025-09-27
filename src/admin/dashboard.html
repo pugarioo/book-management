@@ -14,7 +14,7 @@
     
     <div class="top-container"> 
         <div class="search-cont">
-            <input id="admin-search-bar" type="text" name="keyword" placeholder="Search books by title, author or year">
+            <input id="admin-search-bar" type="text" name="keyword" placeholder="Search books by id, title, author or year">
             <button id="admin-search-btn" onclick="searchBook()">Search</button>
             <button class="clear-btn" id="admin-clear-btn" onclick="clearSearch()">Clear Search</button>  
         </div>
@@ -47,7 +47,7 @@
     <div class="add-cont">
         
         <form id="add-form" action="" method="POST">
-            <p>Add a Book</p>
+            <p id="add-form-title">Add a Book</p>
             <label for="book-title">Title</label>
             <input type="text" name="book-title" id="book-title-add" placeholder="Enter book title">
             <label for="book-author">Author</label>
@@ -67,9 +67,9 @@
     </div>
 
     <div class="edit-cont">
-        
-        <form action="" method="POST">
-            <p>Update Book</p>
+        <form id="edit-form" action="" method="POST">
+            <p id="edit-form-title">Update Book</p>
+            <input type="hidden" name="book-id" id="book-id-edit">
             <label for="book-title">Title</label>
             <input type="text" name="book-title" id="book-title-edit" placeholder="Enter book title">
             <label for="book-author">Author</label>
@@ -85,7 +85,7 @@
             </select>
             <div class="form-options">
                 <button type="button" id="edit-close-btn">Cancel</button>
-                <button type="button" id="update-book-btn">Save</button>
+                <button type="button" id="update-book-btn" onclick="updateBook()">Save</button>
             </div>
         </form>  
     </div>
