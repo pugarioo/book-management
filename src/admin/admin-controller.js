@@ -247,8 +247,7 @@ function updateBook() {
     })
     .then((res => res.json()))
     .then(data => {
-        console.log("Raw res: ", data)
-        if (data.status == "success") {
+        if (data.status === "success") {
             document.getElementById("edit-form-title").textContent = "Updated Succesfully"
             setTimeout(() => {
                 editContainer.classList.remove("open")

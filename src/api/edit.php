@@ -8,17 +8,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $author = $_POST['book-author'];
     $year = $_POST['book-year'];
     $category = $_POST['book-category'];
-    $status = $_POST['book-status'];
 
 
-    if (empty($id) || empty($title) || empty($author) || empty($year) || empty($category) || empty($status)) {
+    if (empty($id) || empty($title) || empty($author) || empty($year) || empty($category)) {
         $response = ["status" => "error", "message" => "All fields are required."];
     } elseif (!is_numeric($year)) {
         $response = ["status" => "error", "message" => "Year must be a number."];
     } else {
-        $query = "UPDATE books SET title = ?, author = ?, year = ?, category = ?, status = ? WHERE book_id = ?";
+        $query = "UPDATE books SET title = ?, author = ?, year = ?, category = ? WHERE book_id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssissi", $title, $author, $year, $category, $status, $id);
+        $stmt->bind_param("ssisi", $title, $author, $year, $category, $id);
 
 
         if ($stmt->execute()) {
