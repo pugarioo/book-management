@@ -1,58 +1,45 @@
-# This is the main branch
+# University E-Library System
 
-## Initialize the Containers
+## Prelim Laboratory Exam Project
 
-### Run command
+### Project Overview
 
-docker-compose up -d --build
+The **University E-Library System** is a web-based application designed to streamline the management of a university library. It allows users to browse available books, search for titles, borrow and return books. For library administrators, it provides an interface to manage books, update records, and monitor transactions efficiently.
 
-## Create Switch to the development branch
+This project was created as part of the **Prelim Laboratory Exam** for CCS112: Application Development and Emerging Technologies.
 
-### Run command
+---
 
-git branch development <br>
-git checkout development
+### Features
 
-### Check current branch
+**For Students / Users:**
 
-git status <br>
-Note: It must show that you are in the development branch
+-   Search for books by title, author, or category
+-   View book availability
+-   Borrow and return books
 
-## Switch to the feature branch
+**For Librarian / Administrators:**
 
-### Each feature must have its own branch. ex. feature/add-book
+-   Add, update, and delete books
+-   Monitor borrow and return transactions
 
-### Create branch using the command
+---
 
-git branch feature/branch-name <br>
-git checkout feature/branch-name
+### Technologies Used
 
-### Check current branch
+-   **Frontend:** HTML, CSS, JavaScript
+-   **Backend:** PHP
+-   **Database:** MySQL
+-   **Tools:** phpMyAdmin (for database management), Docker (Service Containerization)
 
-git status <br>
-Note: It must show that you are in the feature/branch-name branch
+---
 
-## 📚 Books Database Setup Instructions
+### Collaborators
 
-Follow the steps below to set up the `books_db` database and the `books` table.
+-   **Joshua Lopez** – pugarioo
+-   **Arvy Lacampuenga** – Binosaur0107
+-   **Stephanie Gapang** – stephvno07
+-   **Primo Victor Miguel Llenasas** – MiguelLlenasas
+-   **John Risk Labanda** – risktancinco
 
-### 1. Create the Database
-
-### Use the PhpMyAdmin
-
-CREATE DATABASE books_db;
-
-### 2. Create the table
-
-### Use the PhpMyAdmin
-
-CREATE TABLE books (
-book_id INT AUTO_INCREMENT PRIMARY KEY,
-title VARCHAR(255) NOT NULL,
-author VARCHAR(255) NOT NULL,
-year YEAR,
-category VARCHAR(100),
-status ENUM('available', 'borrowed') DEFAULT 'available'
-);
-
-## After these setup, start developing
+> _Add more names as needed depending on your team composition._
