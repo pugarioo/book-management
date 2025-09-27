@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", getBooks)
 
 const closeConfirmBorrow = document.getElementById("cancel-confirm")
 const confirmContainer = document.querySelector(".borrow-confirm-cont")
+const successContainer = document.querySelector(".success-cont")
 
 closeConfirmBorrow.addEventListener("click", () => {
     console.log("clicked")
@@ -55,7 +56,7 @@ function renderBooks(data) {
             tableRow.appendChild(btn) 
         }
         else {
-            const btn = createButtonCell("Return", "return-btn", "confirmBorrow(this)")
+            const btn = createButtonCell("Return", "return-btn", "confirmReturn(this)")
             tableRow.appendChild(btn)
         }
 
@@ -90,18 +91,57 @@ function confirmBorrow (btn) {
     confirmContainer.classList.add("open")
 
     document.getElementById("confirm-borrow").setAttribute("onclick", `borrowBook(${id})`)
-
-    console.log("popped")
 }
 
 function borrowBook(id) {
-    fetch("api/borrow_book.php", {
+    fetch("../api/borrow.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `id=${id}`
     })
     .then(res => res.json())
     .then(data => {
-        // Notif Logic here
+        if (data.status === "success") {
+            confirmContainer.classList.remove("open")
+            document.querySelector(".success-card p").textContent = "Borrow Success"   
+            successContainer.classList.add("open")
+            getBooks()      
+            setTimeout(() => {
+                successContainer.classList.remove("open")
+            }, 1000)   
+        }
     })
 }
+
+function confirmReturn (btn) {
+    const row = btn.closest("tr")
+    const id = (row.querySelectorAll("td")[0]).textContent
+
+    confirmContainer.classList.add("open")
+
+    document.getElementById("confirm-borrow").setAttribute("onclick", `returnBook(${id})`)
+
+}
+
+function returnBook(id) {
+    fetch("../api/return.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `id=${id}`
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        if (data.status === "success") {
+            confirmContainer.classList.remove("open")
+            document.querySelector(".success-card p").textContent = "Return Success"   
+            successContainer.classList.add("open")
+            getBooks()
+            setTimeout(() => {
+                successContainer.classList.remove("open")
+            }, 1000)     
+
+        }
+    })
+}
+

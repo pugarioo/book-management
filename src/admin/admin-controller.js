@@ -135,18 +135,46 @@ function renderTransactions(data) {
     data.forEach(row => {
         const tableRow = document.createElement("tr")
         
+        tableRow.appendChild(createCell(row.transaction_id))
         tableRow.appendChild(createCell(row.book_id))
-        tableRow.appendChild(createCell(row.title))
-        tableRow.appendChild(createCell(row.author))
-        tableRow.appendChild(createCell(row.year))
-        tableRow.appendChild(createCell(row.category))
-        tableRow.appendChild(createCell(row.status === 'available' ? 'Available' : "Borrowed"))
-        tableRow.appendChild(createButtonCell("Set as returned", "return-btn", "returnBook()"))
+        tableRow.appendChild(createCell(row.book_title))
+        tableRow.appendChild(createCell(row.date_borrowed))
+        tableRow.appendChild(createCell(row.date_returned ?? "Not Returned"))
+        
+        if (row.status === 'pending') {
+            tableRow.appendChild(createCell("Pending"))
+            tableRow.appendChild(createButtonCell("Set as returned", "return-btn", "completeTransaction(this)"))
+        } 
+        else {
+            tableRow.appendChild(createCell("Completed"))
+            tableRow.appendChild(createCell("None"))
+        }
         
         table.appendChild(tableRow)
     })
 }
 
+function completeTransaction(btn) {
+    const row = btn.closest("tr")
+    const cells = row.querySelectorAll("td")
+
+    const transaction_id = cells[0].textContent
+    const book_id = cells[1].textContent
+
+    fetch("../api/complete_transaction.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: `id=${transaction_id}&book_id=${book_id}`
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        if (data.status === "success") {
+            cells[6].textContent = "None"
+        }
+    })
+    .catch(err => console.error("Error: ", err))
+}
 
 function renderBooks(data) {
     const table = document.querySelector("#book-table tbody")
@@ -239,5 +267,6 @@ function updateBook() {
     })
     .catch(err => console.error("Error: ", err))
 }
+
 
 

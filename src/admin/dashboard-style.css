@@ -178,7 +178,7 @@ nav {
 }
 
 
-.edit-del-btn, .status-dropdown, #update-status-dropdown {
+.edit-del-btn, .status-dropdown, .return-btn {
     background-color:   black;
     color: white;
     padding: 0.5rem 1rem;
@@ -187,6 +187,12 @@ nav {
 }
 
 .edit-del-btn:hover {
+    background-color: white;
+    color: black;
+    transition: ease .2s;
+}
+
+.return-btn:hover {
     background-color: white;
     color: black;
     transition: ease .2s;
@@ -409,5 +415,4 @@ nav {
     background-color: white;
     color:  rgb(27, 26, 26);
 }
-
 

@@ -11,7 +11,6 @@ if ($result->num_rows > 0) {
         $books[] = $row;
     }
 }
-
 header('Content-Type: application/json');
 echo json_encode($books, JSON_PRETTY_PRINT);
 ?>
