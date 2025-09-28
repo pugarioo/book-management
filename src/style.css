@@ -67,3 +67,7 @@ body {
     border: 2px solid black;
     transition: ease-in-out 0.5s;
 }
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+}

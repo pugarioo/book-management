@@ -409,6 +409,7 @@ nav {
     background-color: rgb(27, 26, 26);
     color: white;
     border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #auth-btn:hover {
