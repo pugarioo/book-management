@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="view-style.css">
+    <title>Books | University E-Library</title>
+</head>
+<body>
+    <nav>
+        <p><i class="fa-solid fa-book"></i> <a id="home-link" href="../index.html"> University E-Library</a></p>
+        <p><i class="fa-solid fa-graduation-cap"></i> Student</p>
+    </nav>
+
+    <div class="search-container">
+        <p> Search a book</p>
+
+        <div class="search-inner">
+            <input type="text" name="keyword" id="student-search-bar" placeholder="Search books by title, author or year">
+            <button id="student-search-btn" onclick="searchBooks()">Search</button>
+            <button id="student-clear-btn" onclick="clearSearch()">Clear Search</button>     
+        </div>
+
+    </div>
+
+    <div class="result-container">
+    <p id="result-label">Library Catalog</p>
+
+    <table id="book-table" border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+        <th>Book ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Borrow/Return</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+
+    </div>
+
+    <div class="borrow-confirm-cont">
+        <div class="confirm-card">
+            <h1>Confirmation</h1>
+            <p>Do you want to borrow/return the following book? </p>
+            <div class="btn-group">
+                <button id="cancel-confirm" >Cancel</button>
+                <button id="confirm-borrow">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-cont">
+        <div class="success-card">
+            <i class="fa-solid fa-circle-check"></i>
+            <p></p>
+        </div>
+    </div>
+
+    <script src="student-controller.js"></script>
+    <script src="https://kit.fontawesome.com/31e62592db.js" crossorigin="anonymous"></script>   
+</body>
+</html>
