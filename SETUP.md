@@ -1,4 +1,4 @@
-# This is the development branch
+# Project Setup
 
 ## Initialize the Containers
 
