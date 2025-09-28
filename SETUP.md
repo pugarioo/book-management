@@ -91,4 +91,4 @@ CREATE DATABASE books_db;
     ('Fahrenheit 451', 'Ray Bradbury', 1953, 'Dystopian'),
     ('Crime and Punishment', 'Fyodor Dostoevsky', 1866, 'Philosophical Fiction');
 
-## After these setup, start developing
+## After these setup, you can now use the system
