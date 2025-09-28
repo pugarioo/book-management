@@ -35,7 +35,8 @@ Note: It must show that you are in the development branch
 Note: It must show that you are in the feature/branch-name branch
 
 ## Books Database Setup Instructions
-You can use the `books_db.sql` file in the `db folder` and import it to phpmyadmin for easier setup 
+
+You can use the `books_db.sql` file in the `db folder` and import it to phpmyadmin for easier setup
 
 or manually setup the database like the folowing:
 
@@ -67,11 +68,12 @@ CREATE DATABASE books_db;
     CREATE TABLE transactions (
     transaction_id INT AUTO_INCREMENT PRIMARY KEY,
     book_id INT NOT NULL,
-    book_title VARCHAR(255) NOT NULL,
     date_borrowed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     date_returned TIMESTAMP NULL DEFAULT NULL,
     status ENUM('completed', 'pending') DEFAULT 'pending',
     FOREIGN KEY (book_id) REFERENCES books(book_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
     );
 
 ### Use this command to generate dummy data

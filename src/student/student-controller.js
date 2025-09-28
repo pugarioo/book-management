@@ -131,7 +131,6 @@ function returnBook(id) {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
         if (data.status === "success") {
             confirmContainer.classList.remove("open")
             document.querySelector(".success-card p").textContent = "Return Success"   

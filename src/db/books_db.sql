@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Sep 27, 2025 at 02:30 PM
+-- Generation Time: Sep 28, 2025 at 09:35 AM
 -- Server version: 8.0.43
 -- PHP Version: 8.2.27
 
@@ -61,7 +61,6 @@ INSERT INTO `books` (`book_id`, `title`, `author`, `year`, `category`, `status`)
 CREATE TABLE `transactions` (
   `transaction_id` int NOT NULL,
   `book_id` int NOT NULL,
-  `book_title` varchar(255) NOT NULL,
   `date_borrowed` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `date_returned` timestamp NULL DEFAULT NULL,
   `status` enum('completed','pending') DEFAULT 'pending'
@@ -108,7 +107,7 @@ ALTER TABLE `transactions`
 -- Constraints for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`);
+  ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

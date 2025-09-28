@@ -26,19 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $stmt->bind_param("i", $id);
                 if ($stmt->execute()) {
 
-                    $titleQuery = $conn->query("SELECT title FROM books WHERE book_id = " . $id);
-
-                    $row = $titleQuery->fetch_assoc();
-
-                    $title = $row['title'];
-
-                    $transQuery = "INSERT into transactions (book_id, book_title) VALUES (?, ?)";
+                    $transQuery = "INSERT into transactions (book_id) VALUES (?)";
                     $transstmt = $conn->prepare($transQuery);
-                    $transstmt->bind_param("is", $id, $title);
+                    $transstmt->bind_param("i", $id);
 
                     if ($transstmt->execute()) {
                         $response = ["status" => "success", "message" => "Book borrowed successfully.", "transaction_created" => true];
                     } else {
+
                         $response = ["status" => "success", "message" => "Book borrowed successfully.", "transaction_created" => false];
                     }
 

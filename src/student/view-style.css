@@ -183,7 +183,7 @@ nav {
 
 .confirm-card{
     background-color: white;
-    height: 25%;
+    min-height: 25%;
     width: 20%;
     padding: 1rem;
     border: none;
