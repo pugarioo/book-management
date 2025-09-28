@@ -170,7 +170,7 @@ function completeTransaction(btn) {
     .then(data => {
         console.log(data)
         if (data.status === "success") {
-            cells[6].textContent = "None"
+            getTransactions()
         }
     })
     .catch(err => console.error("Error: ", err))
